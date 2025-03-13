@@ -1,10 +1,14 @@
 package supplier;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -51,8 +55,24 @@ public class Main {
 
     // ejemplo 3
 
-        Predicate<Integer> esPar = n -> n % 2 == 0;
-        System.out.println("4 es par: " + esPar.test(4));
-        System.out.println("7 es par: " + esPar.test(7));
+    //     Predicate<Integer> esPar = n -> n % 2 == 0;
+    //     System.out.println("4 es par: " + esPar.test(4));
+    //     System.out.println("7 es par: " + esPar.test(7));
+    
+    // ejemplo 4
+
+    List<Estudiante> estudiantes = new ArrayList<>();
+
+    estudiantes.add(new Estudiante("Carlos",5.6));
+    estudiantes.add(new Estudiante("Ana", 9.0));
+    estudiantes.add(new Estudiante("Jose", 78.3));
+    estudiantes.add(new Estudiante("Maria", 88.9));
+
+    Predicate<Estudiante> Esmayor = n -> n.getNota() >= 18;
+
+    List<Estudiante> personasMayores = estudiantes.stream()
+                                        .filter(Esmayor)
+                                        .collect(Collectors.toList());
+    System.out.println("Números pares: " + personasMayores);
     }
 }
