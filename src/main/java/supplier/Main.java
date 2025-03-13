@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -73,6 +74,7 @@ public class Main {
     List<Estudiante> personasMayores = estudiantes.stream()
                                         .filter(Esmayor)
                                         .collect(Collectors.toList());
-    System.out.println("Números pares: " + personasMayores);
+    Consumer<Estudiante> impriConsumer = estudiante ->  System.out.println(estudiante.getNombre());
+    personasMayores.forEach(impriConsumer);
     }
 }
